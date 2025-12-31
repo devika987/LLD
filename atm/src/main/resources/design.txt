@@ -1,0 +1,78 @@
+> Model:
+
+Card:
+- name  :: String
+- accountNumber :: String
+- expiryDate :: String
+- cvv :: String
+- cardHolderName :: String
+- cardNumber :: String
+- pin
+
+Account:
+- accountNumber :: String
+- balance :: Double
+
+Transaction:
+- account :: Account
+- transactionType :: String
+- amount :: Double
+- tiemestamp :: DateTime
+
+
+TransactionType:
+- DEPOSIT
+- WITHDRAWAL
+
+
+----------------------------------------------------------------------------
+
+BankingService:
++ authenticateCard(cardNumber: String, pin: String): Bool
++ getAccountDetails(accountNumber: String): Account
++ checkBalance(accountNumber: String): Double
++ withdraw(accountNumber: String, amount: Double): Bool
++ deposit(accountNumber: String, amount: Double): Bool
+
+----------------------------------------------------------------------------
+
+CashDispenser:
++ dispenseCash(amount: Double): Bool
++ canDispense(amount: Double): Bool
+
+Dispenser500 extends CashDispenser:
+
+Dispenser200 extends CashDispenser:
+
+Dispenser100 extends CashDispenser:
+
+Dispenser1000 extends CashDispenser:
+
+NullDispenser extends CashDispenser:
+
+
+ATMState:
++ insertCard(card: Card): Bool
++ ejectCard(): Bool
++ enterPin(pin: String): Bool
++ selectTransactionType(type: String): Bool
+
+CardInsertedState extends ATMState:
+IdleState extends ATMState:
+PinEnteredState extends ATMState:
+
+
+ATMSystem:
+- currentState: ATMState
+- card: Card
+- bankingService: BankingService
+- cashDispensers: CashDispenser;
++ insertCard(card: Card): Bool
++ ejectCard(): Bool
++ enterPin(pin: String): Bool
++ performOperation(Transactiontype: String, Account account): Bool
+
+
+----------------------------------------------------------------------------
+
+

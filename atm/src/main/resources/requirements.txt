@@ -1,0 +1,12 @@
+Requirements:
+- Inserting card
+- ejecting card
+- pin authentication
+- balance inquiry
+- cash withdrawal
+- deposit funds
+- transaction history
+
+
+
+
